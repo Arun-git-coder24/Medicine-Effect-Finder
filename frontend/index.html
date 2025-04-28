@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Effect Finder</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #medicines-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .med-float {
+            position: absolute;
+            color: #b3c6e0;
+            font-size: 1.1rem;
+            opacity: 0.18;
+            font-weight: 600;
+            white-space: nowrap;
+            user-select: none;
+            animation: floatMed 24s linear infinite;
+        }
+        @keyframes floatMed {
+            0% { transform: translateY(110vh) translateX(0); opacity: 0.18; }
+            10% { opacity: 0.22; }
+            90% { opacity: 0.22; }
+            100% { transform: translateY(-10vh) translateX(0); opacity: 0.18; }
+        }
+        .results-section { margin-top: 32px; }
+        .loading-spinner { display: flex; justify-content: center; align-items: center; margin: 32px 0; }
+        .spinner { border: 4px solid #e3e3e3; border-top: 4px solid #1976d2; border-radius: 50%; width: 36px; height: 36px; animation: spin 1s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .error-box { background: #ffebee; color: #c62828; border-left: 4px solid #c62828; padding: 16px; border-radius: 6px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div id="medicines-bg"></div>
+    <div class="container">
+        <header>
+            <h1>Medicine Effect & Natural Remedies</h1>
+        </header>
+        <div class="input-section">
+            <input type="text" id="medicine-input" placeholder="Enter medicine name..." autocomplete="off">
+            <div id="suggestions-box"></div>
+            <button id="search-button" type="button">Find Effect</button>
+        </div>
+        <div class="results-section">
+            <div id="error-box" class="error-box" style="display:none;"></div>
+            <div id="loading" class="loading-spinner" style="display:none;">
+                <div class="spinner"></div>
+            </div>
+            <div id="medicine-effect" class="result-box" style="display:none;"></div>
+            <div id="remedies-list" class="result-box" style="display:none;"></div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
